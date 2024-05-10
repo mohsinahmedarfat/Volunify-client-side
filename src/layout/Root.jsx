@@ -5,7 +5,9 @@ const Root = () => {
   return (
     <div className="font-mont">
       <Navbar></Navbar>
-      <Outlet></Outlet>
+      <div className="*:py-10">
+        <Outlet></Outlet>
+      </div>
     </div>
   );
 };
