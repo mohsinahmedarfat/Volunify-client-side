@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logOut } = useAuth();
 
   return (
     <nav className="relative shadow">
@@ -132,7 +135,10 @@ const Navbar = () => {
                 </NavLink>
               </div>
               <div>
-                <NavLink className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600">
+                <NavLink
+                  onClick={logOut}
+                  className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
+                >
                   Sign out
                 </NavLink>
               </div>
@@ -144,13 +150,19 @@ const Navbar = () => {
                 className="flex items-center focus:outline-none"
                 aria-label="toggle profile dropdown"
               >
-                <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
+                <div
+                  referrerPolicy="no-referrer"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user.displayName}
+                  className="size-10 overflow-hidden border-2 border-gray-400 rounded-full"
+                >
                   <img
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                    src={user?.photoURL}
                     className="object-cover w-full h-full"
                     alt="avatar"
                   />
                 </div>
+                <Tooltip id="my-tooltip" />
 
                 <h3 className="mx-2 text-gray-700 lg:hidden">Khatab wedaa</h3>
               </button>
