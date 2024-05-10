@@ -5,7 +5,8 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { user, setUser, signInWithGoogle, createUser } = useAuth();
+  const { user, setUser, signInWithGoogle, createUser, updateUserProfile } =
+    useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -24,8 +25,21 @@ const Register = () => {
     }
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { name, photo, email, password } = data;
+
+    // create user with email and password
+    try {
+      const result = await createUser(email, password);
+      console.log(result);
+      await updateUserProfile(name, photo);
+      // Optimistic UI update
+      setUser({ ...result.user, photoURL: photo, displayName: name });
+      toast.success("Sign in successfull");
+      navigate("/");
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <section className="bg-[url('https://i.ibb.co/MRpnSfJ/volunteer-register.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">

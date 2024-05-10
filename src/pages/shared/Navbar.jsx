@@ -118,54 +118,63 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <div>
-                <NavLink
-                  to="/login"
-                  className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
-                >
-                  Sign in
-                </NavLink>
-              </div>
-              <div>
-                <NavLink
-                  to="/register"
-                  className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
-                >
-                  Sign up
-                </NavLink>
-              </div>
-              <div>
-                <NavLink
-                  onClick={logOut}
-                  className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
-                >
-                  Sign out
-                </NavLink>
-              </div>
-            </div>
+              {!user ? (
+                <>
+                  <div>
+                    <NavLink
+                      to="/login"
+                      className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
+                    >
+                      Sign in
+                    </NavLink>
+                  </div>
+                  <div>
+                    <NavLink
+                      to="/register"
+                      className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
+                    >
+                      Sign up
+                    </NavLink>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <NavLink
+                      onClick={logOut}
+                      className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
+                    >
+                      Sign out
+                    </NavLink>
+                  </div>
+                  {/* profile */}
+                  <div className="flex items-center mt-4 lg:mt-0">
+                    <button
+                      type="button"
+                      className="flex items-center focus:outline-none"
+                      aria-label="toggle profile dropdown"
+                    >
+                      <div
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content={user?.displayName}
+                        className="size-10 overflow-hidden border-2 border-gray-400 rounded-full"
+                      >
+                        <img
+                          referrerPolicy="no-referrer"
+                          src={user?.photoURL}
+                          className="object-cover w-full h-full"
+                          alt="avatar"
+                        />
+                      </div>
+                      <Tooltip id="my-tooltip" />
 
-            <div className="flex items-center mt-4 lg:mt-0">
-              <button
-                type="button"
-                className="flex items-center focus:outline-none"
-                aria-label="toggle profile dropdown"
-              >
-                <div
-                  referrerPolicy="no-referrer"
-                  data-tooltip-id="my-tooltip"
-                  data-tooltip-content={user.displayName}
-                  className="size-10 overflow-hidden border-2 border-gray-400 rounded-full"
-                >
-                  <img
-                    src={user?.photoURL}
-                    className="object-cover w-full h-full"
-                    alt="avatar"
-                  />
-                </div>
-                <Tooltip id="my-tooltip" />
-
-                <h3 className="mx-2 text-gray-700 lg:hidden">Khatab wedaa</h3>
-              </button>
+                      <h3 className="mx-2 text-gray-700 lg:hidden">
+                        Khatab wedaa
+                      </h3>
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
