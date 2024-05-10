@@ -1,7 +1,9 @@
+import Slider from "./Slider";
+
 const Home = () => {
   return (
-    <div>
-      <h1 className="">this is home</h1>
+    <div className="px-5 lg:max-w-4xl xl:max-w-6xl mx-auto">
+      <Slider />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { user, setUser, signInWithGoogle, createUser, updateUserProfile } =
+  const { setUser, signInWithGoogle, createUser, updateUserProfile } =
     useAuth();
   const navigate = useNavigate();
   const {
