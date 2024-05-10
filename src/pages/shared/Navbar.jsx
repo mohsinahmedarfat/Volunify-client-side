@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">
             <h1 className="text-3xl font-extrabold bg-gradient-to-r from-[#AD8B73] to-[#CCD5AE] inline-block text-transparent bg-clip-text">
-              <Link>Volunify</Link>
+              <Link to="/">Volunify</Link>
             </h1>
 
             {/* Mobile menu button */}
