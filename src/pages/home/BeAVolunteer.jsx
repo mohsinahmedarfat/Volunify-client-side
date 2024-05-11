@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Slide } from "react-awesome-reveal";
 
 const BeAVolunteer = () => {
@@ -5,7 +6,7 @@ const BeAVolunteer = () => {
     <section className="bg-[#FFFBE9]">
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10">
         {/* left */}
-        <div className="h-full mt-8 lg:mt-0">
+        <div className="h-full">
           <img
             src="https://i.ibb.co/ZNrSHHy/be-Volunteer.jpg"
             alt=""
