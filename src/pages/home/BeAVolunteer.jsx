@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Slide } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 
 const BeAVolunteer = () => {
   return (
@@ -14,7 +14,7 @@ const BeAVolunteer = () => {
           />
         </div>
         {/* right */}
-        <Slide direction="left">
+        <Fade duration={2000}>
           <div className="rounded-sm lg:text-left space-y-10 p-6">
             <div className="text-center">
               <h1 className="text-bold text-3xl ">Empower Your Community</h1>
@@ -55,7 +55,7 @@ const BeAVolunteer = () => {
               </p>
             </div>
           </div>
-        </Slide>
+        </Fade>
       </div>
     </section>
   );

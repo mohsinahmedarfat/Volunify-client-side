@@ -4,6 +4,8 @@ import Root from "../layout/Root";
 import ErrorPage from "../pages/ErrorPage";
 import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
+import AddVolunteer from "../pages/AddVolunteer";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +24,14 @@ const Router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/add-volunteer",
+        element: (
+          <PrivateRoute>
+            <AddVolunteer></AddVolunteer>
+          </PrivateRoute>
+        ),
       },
     ],
   },

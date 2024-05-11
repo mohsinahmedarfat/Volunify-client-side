@@ -3,11 +3,13 @@ import logo from "../../assets/logo-1.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
 const Register = () => {
   const { setUser, signInWithGoogle, createUser, updateUserProfile } =
     useAuth();
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   const {
     register,
     handleSubmit,
@@ -27,6 +29,19 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const { name, photo, email, password } = data;
+
+    // password verification
+    if (password.length < 6) {
+      setError("Password should be at least 6 characters");
+      return;
+    }
+    if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
+      setError(
+        "Password must contains at least one uppercase and lowercase letter"
+      );
+      return;
+    }
+    setError("");
 
     // create user with email and password
     try {
@@ -122,6 +137,7 @@ const Register = () => {
                 {errors.password && (
                   <small className="text-red-400">This field is required</small>
                 )}
+                {error && <small className="text-red-500 mt-2">{error}</small>}
               </div>
               {/* <div>
                 <label

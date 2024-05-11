@@ -1,12 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo-1.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, signIn } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -17,14 +18,40 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();
-      toast.success("Sign in successfull");
-      navigate("/");
+      toast.success("Sign in successful");
+      // navigate after login
+      navigate(`${location.state ? location.state : "/"}`);
     } catch (error) {
       toast.error(error.message);
     }
   };
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    const { email, password } = data;
+
+    // login user
+    try {
+      await signIn(email, password);
+      toast.success("Login successful");
+      navigate(`${location.state ? location.state : "/"}`);
+    } catch (error) {
+      toast.error(error.message);
+    }
+
+    // signIn(email, password)
+    //   .then((result) => {
+    //     console.log(result.user);
+    //     if (result.user) {
+    //       toast.success("Login successful");
+    //     }
+    //     // navigate after login
+    //     navigate(`${location.state ? location.state : "/"}`);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   });
+  };
   return (
     <div className="container px-12 mx-auto bg-[url('https://i.ibb.co/4SDhq7F/vol-sign-in-wall.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">
       <div className="flex flex-col items-center py-6 lg:h-[36rem] lg:flex-row">
