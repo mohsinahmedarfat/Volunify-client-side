@@ -8,7 +8,7 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
 
   return (
-    <nav className="relative shadow">
+    <nav className="bg-gradient-to-b from-[#E9EDC9] to-[#FEFAE0] shadow sticky top-0 z-50">
       <div className="container px-6 py-4 mx-auto">
         <div className="lg:flex lg:items-center lg:justify-between">
           <div className="flex items-center justify-between">

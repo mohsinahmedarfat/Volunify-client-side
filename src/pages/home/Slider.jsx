@@ -32,7 +32,7 @@ const Slider = () => {
           clickable: true,
         }}
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
-        className="mySwiper px-20"
+        className="mySwiper"
       >
         <SwiperSlide>
           <div className="relative bg-black rounded-2xl">
