@@ -2,8 +2,7 @@ import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 const VolunteerPostCard = ({ volunteerPost }) => {
-  console.log(volunteerPost);
-  const { thumbnail, title, category, deadline } = volunteerPost;
+  const { _id, thumbnail, title, category, deadline } = volunteerPost;
   const date = deadline.split("T")[0];
   return (
     <div>
@@ -24,9 +23,9 @@ const VolunteerPostCard = ({ volunteerPost }) => {
             </div>
 
             {/* <p className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-[#AD8B73]"> */}
-            <Link>
-              <p className="text-[#b07d62] hover:text-[#9d6b53] hover:font-medium w-max flex items-center ">
-                <p>Read mores</p>
+            <Link to={`/volunteer-post/${_id}`}>
+              <div className="text-[#b07d62] hover:text-[#9d6b53] hover:font-medium w-max flex items-center ">
+                <p>View Details</p>
                 <svg
                   className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                   aria-hidden="true"
@@ -42,7 +41,7 @@ const VolunteerPostCard = ({ volunteerPost }) => {
                     d="M1 5h12m0 0L9 1m4 4L9 9"
                   />
                 </svg>
-              </p>
+              </div>
             </Link>
           </div>
         </div>

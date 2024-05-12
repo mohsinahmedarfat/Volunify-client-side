@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import VolunteerPostCard from "./VolunteerPostCard";
-import { Link } from "react-router-dom";
 
-const VolunteerNeed = () => {
+const VolunteerAllPosts = () => {
   const [volunteerPosts, setVolunteerPosts] = useState([]);
-
+  console.log(volunteerPosts);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/volunteers`)
@@ -31,14 +30,8 @@ const VolunteerNeed = () => {
           ></VolunteerPostCard>
         ))}
       </div>
-
-      <div className="flex justify-center">
-        <button className="w-1/2 mt-10 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-[#D4A373] rounded-lg shrink-0 sm:w-auto hover:bg-[#AD8B73]">
-          <Link to="/volunteer-need">See All</Link>
-        </button>
-      </div>
     </div>
   );
 };
 
-export default VolunteerNeed;
+export default VolunteerAllPosts;
