@@ -15,7 +15,7 @@ const BeAVolunteer = () => {
         </div>
         {/* right */}
         <Fade duration={2000}>
-          <div className="rounded-sm lg:text-left space-y-10 p-6">
+          <div className="rounded-sm lg:text-left space-y-10 p-6 text-black">
             <div className="text-center">
               <h1 className="text-bold text-3xl ">Empower Your Community</h1>
               <h3 className="font-medium text-lg mb-5">
