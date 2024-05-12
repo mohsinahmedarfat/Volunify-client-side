@@ -13,7 +13,9 @@ const VolunteerNeed = () => {
   return (
     <div>
       <div className="text-center mb-10">
-        <h1 className="text-3xl font-bold">Empowerment Through Volunteering</h1>
+        <h1 className="text-3xl font-bold mb-3">
+          Empowerment Through Volunteering
+        </h1>
         <p className="text-balance">
           Take action and empower others by volunteering. Join our community of
           changemakers and make a difference today.
