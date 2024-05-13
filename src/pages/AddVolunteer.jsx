@@ -4,10 +4,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 const AddVolunteer = () => {
   const { user } = useAuth();
   const [startDate, setStartDate] = useState(new Date());
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,24 +46,19 @@ const AddVolunteer = () => {
       console.log(data);
       if (data.insertedId) {
         toast.success("Volunteer post created successfully");
+        navigate("/my-posts");
       }
     } catch (err) {
       console.log(err.message);
     }
     form.reset();
-
-    // axios
-    //   .post("http://localhost:5000/volunteers", volunteersPost)
-    //   .then((data) => {
-    //     console.log(data.data);
-    //     if (data.data.insertedId) {
-    //       toast.success("Tourist spot added successfully");
-    //     }
-    //   });
   };
 
   return (
     <div className="px-5 lg:px-20 xl:px-40 bg-[url('https://i.ibb.co/8c9nmws/slide-2.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">
+      <Helmet>
+        <title>Add Volunteer Posts | Volunify</title>
+      </Helmet>
       <div className="card shrink-0 w-full shadow-2xl bg-base-100 mx-auto">
         <h1 className="text-3xl text-center mb-5 mt-10 font-bold">
           Add a Volunteer

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { setUser, signInWithGoogle, createUser, updateUserProfile } =
@@ -58,13 +59,16 @@ const Register = () => {
   };
   return (
     <section className="bg-[url('https://i.ibb.co/MRpnSfJ/volunteer-register.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">
+      <Helmet>
+        <title>Register | Volunify</title>
+      </Helmet>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 border border-gray-300">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <div className="flex items-center justify-center mb-6">
               <img className="size-20 mr-2" src={logo} alt="logo" />
             </div>
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+            <h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
               Create an account
             </h1>
             <form

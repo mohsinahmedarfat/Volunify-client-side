@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import VolunteerPostCard from "./VolunteerPostCard";
+import { Helmet } from "react-helmet-async";
 
 const VolunteerAllPosts = () => {
   const [volunteerPosts, setVolunteerPosts] = useState([]);
@@ -12,6 +13,9 @@ const VolunteerAllPosts = () => {
   }, []);
   return (
     <div className="px-10">
+      <Helmet>
+        <title>Need Volunteer Posts | Volunify</title>
+      </Helmet>
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold mb-3">
           Empowerment Through Volunteering

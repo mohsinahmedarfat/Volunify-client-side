@@ -3,6 +3,7 @@ import logo from "../../assets/logo-1.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { signInWithGoogle, signIn } = useAuth();
@@ -35,25 +36,15 @@ const Login = () => {
       await signIn(email, password);
       toast.success("Login successful");
       navigate(`${location.state ? location.state : "/"}`);
-    } catch (error) {
-      toast.error(error.message);
+    } catch {
+      toast.error("Invalid email or password");
     }
-
-    // signIn(email, password)
-    //   .then((result) => {
-    //     console.log(result.user);
-    //     if (result.user) {
-    //       toast.success("Login successful");
-    //     }
-    //     // navigate after login
-    //     navigate(`${location.state ? location.state : "/"}`);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //   });
   };
   return (
     <div className="container px-12 mx-auto bg-[url('https://i.ibb.co/4SDhq7F/vol-sign-in-wall.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">
+      <Helmet>
+        <title>Login | Volunify</title>
+      </Helmet>
       <div className="flex flex-col items-center py-6 lg:h-[36rem] lg:flex-row">
         <div className="lg:w-1/2">
           <div className="flex items-center mb-6">
