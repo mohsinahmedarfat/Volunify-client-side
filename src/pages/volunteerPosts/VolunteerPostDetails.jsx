@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router-dom";
 const VolunteerPostDetails = () => {
   const volunteerPost = useLoaderData();
   const {
-    _id,
     thumbnail,
     title,
     description,

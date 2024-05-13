@@ -11,7 +11,7 @@ const VolunteerAllPosts = () => {
       .then((data) => setVolunteerPosts(data.data));
   }, []);
   return (
-    <div>
+    <div className="px-10">
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold mb-3">
           Empowerment Through Volunteering

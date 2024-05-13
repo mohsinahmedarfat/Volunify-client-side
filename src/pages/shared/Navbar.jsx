@@ -89,7 +89,10 @@ const Navbar = () => {
                 </NavLink>
               </div>
               <div>
-                <NavLink className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600">
+                <NavLink
+                  to="/volunteer-need"
+                  className="px-3 py-2 mx-3 mt-2 text-gray-700 transition-colors duration-300 transform rounded-md lg:mt-0 hover:bg-[#CEAB93] hover:text-gray-600"
+                >
                   Need Volunteer
                 </NavLink>
               </div>
