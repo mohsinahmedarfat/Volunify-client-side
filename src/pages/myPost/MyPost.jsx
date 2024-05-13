@@ -3,11 +3,13 @@ import { BiEdit } from "react-icons/bi";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MyPost = () => {
   const { user } = useAuth();
   const [myPosts, setMyPosts] = useState([]);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     axios
@@ -16,10 +18,42 @@ const MyPost = () => {
         console.log(data.data);
         setMyPosts(data.data);
       });
-  }, [user?.email]);
+  }, [user?.email, reload]);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#22c55e",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/volunteer-post/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              //remove from UI after delete
+              setReload(!reload);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div className="my-10 mx-10">
+      <ScrollRestoration></ScrollRestoration>
       <h1 className="text-3xl text-center mb-5 font-bold">
         My Volunteer Need Posts
       </h1>
@@ -47,14 +81,15 @@ const MyPost = () => {
                   <td className="text-center">{myPost.volunteersNeed}</td>
                   <td>{myPost.deadline.split("T")[0]}</td>
                   <td className="text-xl hover:text-[#AD8B73]">
-                    <Link>
+                    <Link to={`/update-post/${myPost._id}`}>
                       <BiEdit />
                     </Link>
                   </td>
-                  <td className="text-xl hover:text-[#AD8B73]">
-                    <Link>
-                      <AiOutlineDelete />
-                    </Link>
+                  <td
+                    onClick={() => handleDelete(myPost._id)}
+                    className="text-xl hover:text-[#AD8B73] cursor-pointer"
+                  >
+                    <AiOutlineDelete />
                   </td>
                 </tr>
               ))}
