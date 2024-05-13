@@ -70,8 +70,9 @@ const Router = createBrowserRouter([
             <UpdatePost></UpdatePost>
           </PrivateRoute>
         ),
+        // loader: () => fetch(`http://localhost:5000/volunteer-post`),
         loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/update-post/${params.id}`),
+          fetch(`http://localhost:5000/volunteer-post/${params.id}`),
       },
     ],
   },

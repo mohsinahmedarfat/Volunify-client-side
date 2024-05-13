@@ -8,9 +8,19 @@ import DatePicker from "react-datepicker";
 
 const UpdatePost = () => {
   const post = useLoaderData();
-  console.log(post);
+  const {
+    thumbnail,
+    title,
+    description,
+    location,
+    category,
+    deadline,
+    volunteersNeed,
+  } = post;
+  const date = deadline.split("T")[0];
+
   const { user } = useAuth();
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(date);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -39,9 +49,25 @@ const UpdatePost = () => {
     };
     console.table(UpdatedPost);
 
+    //     fetch(`http://localhost:5000/volunteer-post/${post._id}`, {
+    //       method: "PUT",
+    //       headers: {
+    //         "content-type": "application/json",
+    //       },
+    //       body: JSON.stringify(UpdatedPost),
+    //     })
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         console.log(data);
+    //         if (data.modifiedCount > 0) {
+    //           alert("User updated successfully");
+    //         }
+    //       });
+    //   };
+
     try {
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/update-post/${post._id}`,
+        `${import.meta.env.VITE_API_URL}/volunteer-post/${post._id}`,
         UpdatedPost
       );
       console.log(data);
@@ -74,6 +100,7 @@ const UpdatePost = () => {
                 name="thumbnail"
                 type="text"
                 placeholder="thumbnail URL"
+                defaultValue={thumbnail}
                 className="input input-bordered"
                 required
               />
@@ -87,6 +114,7 @@ const UpdatePost = () => {
                 name="title"
                 type="text"
                 placeholder="title"
+                defaultValue={title}
                 className="input input-bordered"
                 required
               />
@@ -99,6 +127,7 @@ const UpdatePost = () => {
                 name="description"
                 type="text"
                 placeholder="description"
+                defaultValue={description}
                 className="input input-bordered"
                 required
               />
@@ -111,6 +140,7 @@ const UpdatePost = () => {
                 name="location"
                 type="text"
                 placeholder="Location"
+                defaultValue={location}
                 className="input input-bordered"
                 required
               />
@@ -124,6 +154,7 @@ const UpdatePost = () => {
                 name="category"
                 type="text"
                 placeholder="ex. healthcare / education / social service"
+                defaultValue={category}
                 className="input input-bordered"
                 required
               />
@@ -146,6 +177,7 @@ const UpdatePost = () => {
               <input
                 name="volunteersNeed"
                 type="number"
+                defaultValue={volunteersNeed}
                 className="input input-bordered"
                 required
               />
@@ -176,7 +208,7 @@ const UpdatePost = () => {
           </div>
           <div className="form-control mt-6">
             <button className="btn bg-[#D4A373] hover:bg-[#AD8B73] text-white">
-              Add Post
+              Update Post
             </button>
           </div>
         </form>
