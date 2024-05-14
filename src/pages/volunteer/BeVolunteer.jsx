@@ -243,7 +243,7 @@ const BeVolunteer = () => {
               />
             </div>
 
-            <div className="form-control w-full col-span-2">
+            <div className="form-control w-full md:col-span-2">
               <label className="label">
                 <span className="label-text">Suggestion</span>
               </label>

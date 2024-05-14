@@ -8,7 +8,9 @@ const VolunteerAllPosts = () => {
   console.log(volunteerPosts);
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/volunteers`)
+      .get(`${import.meta.env.VITE_API_URL}/volunteers`, {
+        withCredentials: true,
+      })
       .then((data) => setVolunteerPosts(data.data));
   }, []);
   return (

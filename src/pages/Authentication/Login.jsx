@@ -91,7 +91,7 @@ const Login = () => {
                     {...register("email", { required: true })}
                   />
                   {errors.email && (
-                    <small className="text-red-400">
+                    <small className="text-red-400 flex mt-2 ">
                       This field is required
                     </small>
                   )}
@@ -109,7 +109,7 @@ const Login = () => {
                     {...register("password", { required: true })}
                   />
                   {errors.password && (
-                    <small className="text-red-400">
+                    <small className="text-red-400 flex mt-2">
                       This field is required
                     </small>
                   )}
