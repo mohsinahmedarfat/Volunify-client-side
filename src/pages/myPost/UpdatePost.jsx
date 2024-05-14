@@ -49,22 +49,6 @@ const UpdatePost = () => {
     };
     console.table(UpdatedPost);
 
-    //     fetch(`http://localhost:5000/volunteer-post/${post._id}`, {
-    //       method: "PUT",
-    //       headers: {
-    //         "content-type": "application/json",
-    //       },
-    //       body: JSON.stringify(UpdatedPost),
-    //     })
-    //       .then((res) => res.json())
-    //       .then((data) => {
-    //         console.log(data);
-    //         if (data.modifiedCount > 0) {
-    //           alert("User updated successfully");
-    //         }
-    //       });
-    //   };
-
     try {
       const { data } = await axios.put(
         `${import.meta.env.VITE_API_URL}/volunteer-post/${post._id}`,
@@ -189,8 +173,8 @@ const UpdatePost = () => {
               <input
                 name="name"
                 type="text"
-                value={user.displayName}
-                className="input input-bordered"
+                defaultValue={user.displayName}
+                className="input input-bordered text-gray-400 pointer-events-none"
               />
             </div>
 
@@ -201,8 +185,8 @@ const UpdatePost = () => {
               <input
                 name="email"
                 type="email"
-                value={user.email}
-                className="input input-bordered"
+                defaultValue={user.email}
+                className="input input-bordered text-gray-400 pointer-events-none"
               />
             </div>
           </div>

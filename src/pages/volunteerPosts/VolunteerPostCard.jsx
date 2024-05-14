@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 const VolunteerPostCard = ({ volunteerPost }) => {
   const { _id, thumbnail, title, category, deadline } = volunteerPost;
   const date = deadline.split("T")[0];
+
   return (
     <div>
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow group">
-        <img className="rounded-t-lg" src={thumbnail} alt="" />
+      <div className="border border-gray-200 h-full max-w-sm bg-white  rounded-lg shadow group">
+        <img className="rounded-t-lg h-[250px]" src={thumbnail} alt="" />
         <div className="p-5">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 group-hover:text-[#9d6b53]">
             {title}
@@ -20,9 +21,8 @@ const VolunteerPostCard = ({ volunteerPost }) => {
             </span>
           </div>
 
-          {/* <p className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-[#AD8B73]"> */}
-          <Link to={`/volunteer-post/${_id}`}>
-            <div className="text-[#b07d62] hover:text-[#9d6b53] hover:font-medium w-max flex items-center ">
+          <Link to={`/be-volunteer/${_id}`}>
+            <div className=" text-[#b07d62] hover:text-[#9d6b53] hover:font-medium w-max flex items-center ">
               <p>View Details</p>
               <svg
                 className="rtl:rotate-180 w-3.5 h-3.5 ms-2"

@@ -139,6 +139,14 @@ const Navbar = () => {
                       Manage My Post
                     </Link>
                   </div>
+                  <div>
+                    <Link
+                      to={`/my-requests/${user?.email}`}
+                      className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform hover:bg-gray-100 hover:text-gray-700"
+                    >
+                      My Volunter Request Posts
+                    </Link>
+                  </div>
                 </div>
               </div>
               <label className="swap swap-rotate mx-2">

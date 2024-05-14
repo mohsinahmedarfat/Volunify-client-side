@@ -10,6 +10,8 @@ import VolunteerAllPosts from "../pages/volunteerPosts/VolunteerAllPosts";
 import VolunteerPostDetails from "../pages/volunteerPosts/VolunteerPostDetails";
 import MyPost from "../pages/myPost/MyPost";
 import UpdatePost from "../pages/myPost/UpdatePost";
+import BeVolunteer from "../pages/volunteer/BeVolunteer";
+import MyVolunteerReq from "../pages/volunteer/MyVolunteerReq";
 
 const Router = createBrowserRouter([
   {
@@ -56,6 +58,16 @@ const Router = createBrowserRouter([
           fetch(`http://localhost:5000/volunteer-post/${params.id}`),
       },
       {
+        path: "/be-volunteer/:id",
+        element: (
+          <PrivateRoute>
+            <BeVolunteer></BeVolunteer>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/be-volunteer/${params.id}`),
+      },
+      {
         path: "/my-posts",
         element: (
           <PrivateRoute>
@@ -70,9 +82,18 @@ const Router = createBrowserRouter([
             <UpdatePost></UpdatePost>
           </PrivateRoute>
         ),
-        // loader: () => fetch(`http://localhost:5000/volunteer-post`),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/volunteer-post/${params.id}`),
+      },
+      {
+        path: "/my-requests/:email",
+        element: (
+          <PrivateRoute>
+            <MyVolunteerReq></MyVolunteerReq>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/volunteer-requests/${params.email}`),
       },
     ],
   },

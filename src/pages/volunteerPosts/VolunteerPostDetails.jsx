@@ -3,6 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const VolunteerPostDetails = () => {
   const volunteerPost = useLoaderData();
   const {
+    _id,
     thumbnail,
     title,
     description,
@@ -14,8 +15,6 @@ const VolunteerPostDetails = () => {
     organizerEmail,
   } = volunteerPost;
   const date = deadline.split("T")[0];
-
-  // flex items-center justify-center w-full h-full
 
   return (
     <div>
@@ -85,126 +84,10 @@ const VolunteerPostDetails = () => {
 
               <div className="w-full">
                 <button className="!w-full px-5 py-3 text-sm tracking-wide text-white transition-colors duration-200 bg-[#D4A373] rounded-lg shrink-0 sm:w-auto hover:bg-[#AD8B73]">
-                  <Link>Be a Volunteer</Link>
+                  <Link to={`/be-volunteer/${_id}`}>Be a Volunteer</Link>
                 </button>
               </div>
             </div>
-
-            {/* <div className="grid gap-6 mt-8 sm:grid-cols-2">
-              <div className="flex items-center text-gray-800 -px-3">
-                <svg
-                  className="w-5 h-5 mx-3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-
-                <span className="mx-3">Premium selection</span>
-              </div>
-
-              <div className="flex items-center text-gray-800 -px-3">
-                <svg
-                  className="w-5 h-5 mx-3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-
-                <span className="mx-3">Insurance</span>
-              </div>
-
-              <div className="flex items-center text-gray-800 -px-3">
-                <svg
-                  className="w-5 h-5 mx-3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-
-                <span className="mx-3">All legal documents</span>
-              </div>
-
-              <div className="flex items-center text-gray-800 -px-3">
-                <svg
-                  className="w-5 h-5 mx-3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-
-                <span className="mx-3">From US glasses dealers</span>
-              </div>
-
-              <div className="flex items-center text-gray-800 -px-3">
-                <svg
-                  className="w-5 h-5 mx-3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-
-                <span className="mx-3">Payment Security</span>
-              </div>
-
-              <div className="flex items-center text-gray-800 -px-3">
-                <svg
-                  className="w-5 h-5 mx-3"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-
-                <span className="mx-3">Fast shipping (+ Express)</span>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

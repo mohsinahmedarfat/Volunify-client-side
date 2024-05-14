@@ -1,15 +1,28 @@
-import { useState } from "react";
-import useAuth from "../hooks/useAuth";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import axios from "axios";
-import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import useAuth from "../../hooks/useAuth";
 
-const AddVolunteer = () => {
+const BeVolunteer = () => {
+  const volunteerPost = useLoaderData();
+  console.log(volunteerPost);
+  const {
+    thumbnail,
+    title,
+    description,
+    location,
+    category,
+    deadline,
+    volunteersNeed,
+    organizerName,
+    organizerEmail,
+  } = volunteerPost;
+  const date = deadline.split("T")[0];
+
   const { user } = useAuth();
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(date);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -22,10 +35,14 @@ const AddVolunteer = () => {
     const category = form.category.value;
     const deadline = startDate;
     const volunteersNeed = parseInt(form.volunteersNeed.value);
-    const organizerName = form.name.value;
-    const organizerEmail = form.email.value;
+    const organizerName = form.organizerName.value;
+    const organizerEmail = form.organizerEmail.value;
+    const status = form.status.value;
+    const volunteerName = form.volunteerName.value;
+    const volunteerEmail = form.volunteerEmail.value;
+    const suggestion = form.suggestion.value;
 
-    const volunteersPost = {
+    const volunteer = {
       thumbnail,
       title,
       description,
@@ -33,35 +50,48 @@ const AddVolunteer = () => {
       category,
       deadline,
       volunteersNeed,
+      status,
       organizerName,
       organizerEmail,
+      volunteerName,
+      volunteerEmail,
+      suggestion,
     };
-    console.table(volunteersPost);
+    console.table(volunteer);
 
-    try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/volunteers`,
-        volunteersPost
-      );
-      console.log(data);
-      if (data.insertedId) {
-        toast.success("Volunteer post created successfully");
-        navigate("/my-posts");
-      }
-    } catch (err) {
-      console.log(err.message);
-    }
-    form.reset();
+    // volunteer request validation
+    if (volunteerEmail === organizerEmail)
+      return toast.error("Action not permitted!");
+
+    if (volunteersNeed <= 0)
+      return toast.error("Action not permitted! The event is full Now.");
+
+    fetch(`${import.meta.env.VITE_API_URL}/volunteer-requests`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(volunteer),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success("Volunteer requested successfully");
+        }
+        navigate("/volunteer-need");
+      })
+      .catch((err) => console.log(err.message));
   };
 
   return (
-    <div className="px-5 lg:px-20 xl:px-40 bg-[url('https://i.ibb.co/8c9nmws/slide-2.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">
+    <div className="m-10">
       <Helmet>
-        <title>Add Volunteer Posts | Volunify</title>
+        <title>Be a Volunteer | Volunify</title>
       </Helmet>
       <div className="card shrink-0 w-full shadow-2xl bg-base-100 mx-auto">
         <h1 className="text-3xl text-center mb-5 mt-10 font-bold">
-          Add a Volunteer
+          Be a Volunteer
         </h1>
         <form onSubmit={handleSubmit} className="card-body">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -73,7 +103,8 @@ const AddVolunteer = () => {
                 name="thumbnail"
                 type="text"
                 placeholder="thumbnail URL"
-                className="input input-bordered"
+                defaultValue={thumbnail}
+                className="input input-bordered text-gray-400 pointer-events-none"
                 required
               />
             </div>
@@ -86,7 +117,8 @@ const AddVolunteer = () => {
                 name="title"
                 type="text"
                 placeholder="title"
-                className="input input-bordered"
+                defaultValue={title}
+                className="input input-bordered text-gray-400 pointer-events-none"
                 required
               />
             </div>
@@ -98,7 +130,8 @@ const AddVolunteer = () => {
                 name="description"
                 type="text"
                 placeholder="description"
-                className="input input-bordered"
+                defaultValue={description}
+                className="input input-bordered text-gray-400 pointer-events-none"
                 required
               />
             </div>
@@ -110,7 +143,8 @@ const AddVolunteer = () => {
                 name="location"
                 type="text"
                 placeholder="Location"
-                className="input input-bordered"
+                defaultValue={location}
+                className="input input-bordered text-gray-400 pointer-events-none"
                 required
               />
             </div>
@@ -123,7 +157,8 @@ const AddVolunteer = () => {
                 name="category"
                 type="text"
                 placeholder="ex. healthcare / education / social service"
-                className="input input-bordered"
+                defaultValue={category}
+                className="input input-bordered text-gray-400 pointer-events-none"
                 required
               />
             </div>
@@ -132,7 +167,7 @@ const AddVolunteer = () => {
                 <span className="label-text">Deadline</span>
               </label>
               <DatePicker
-                className="input input-bordered w-full"
+                className="input input-bordered text-gray-400 pointer-events-none w-full"
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
               />
@@ -145,18 +180,29 @@ const AddVolunteer = () => {
               <input
                 name="volunteersNeed"
                 type="number"
-                className="input input-bordered"
+                defaultValue={volunteersNeed}
+                className="input input-bordered text-gray-400 pointer-events-none"
                 required
               />
+            </div>
+
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Status</span>
+              </label>
+
+              <select name="status" id="" className="p-3 border rounded-lg">
+                <option value="Request">Request</option>
+              </select>
             </div>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Organizer name</span>
               </label>
               <input
-                name="name"
+                name="organizerName"
                 type="text"
-                defaultValue={user.displayName}
+                defaultValue={organizerName}
                 className="input input-bordered text-gray-400 pointer-events-none"
               />
             </div>
@@ -166,16 +212,51 @@ const AddVolunteer = () => {
                 <span className="label-text">Organizer Email</span>
               </label>
               <input
-                name="email"
+                name="organizerEmail"
+                type="email"
+                defaultValue={organizerEmail}
+                className="input input-bordered text-gray-400 pointer-events-none"
+              />
+            </div>
+
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Volunteer name</span>
+              </label>
+              <input
+                name="volunteerName"
+                type="text"
+                defaultValue={user.displayName}
+                className="input input-bordered text-gray-400 pointer-events-none"
+              />
+            </div>
+
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Volunteer Email</span>
+              </label>
+              <input
+                name="volunteerEmail"
                 type="email"
                 defaultValue={user.email}
                 className="input input-bordered text-gray-400 pointer-events-none"
               />
             </div>
+
+            <div className="form-control w-full col-span-2">
+              <label className="label">
+                <span className="label-text">Suggestion</span>
+              </label>
+              <input
+                name="suggestion"
+                type="text"
+                className="input input-bordered"
+              />
+            </div>
           </div>
           <div className="form-control mt-6">
             <button className="btn bg-[#D4A373] hover:bg-[#AD8B73] text-white">
-              Add Post
+              Request
             </button>
           </div>
         </form>
@@ -184,4 +265,4 @@ const AddVolunteer = () => {
   );
 };
 
-export default AddVolunteer;
+export default BeVolunteer;

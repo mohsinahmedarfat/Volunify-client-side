@@ -27,7 +27,7 @@ const VolunteerAllPosts = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {volunteerPosts.slice(0, 6).map((volunteerPost) => (
+        {volunteerPosts.map((volunteerPost) => (
           <VolunteerPostCard
             key={volunteerPost._id}
             volunteerPost={volunteerPost}
