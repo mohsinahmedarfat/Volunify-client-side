@@ -17,7 +17,7 @@ const VolunteerAllPosts = () => {
   useEffect(() => {
     axios
       .get(
-        `${import.meta.env.VITE_API_URL}/volunteers?email=${
+        `${import.meta.env.VITE_API_URL}/volunteer-cards?email=${
           user.email
         }&search=${search}&sort=${sort}`,
         {

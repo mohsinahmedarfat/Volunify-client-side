@@ -3,15 +3,19 @@ import { useEffect, useState } from "react";
 import VolunteerPostCard from "./VolunteerPostCard";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
+import useAuth from "../../hooks/useAuth";
 
 const VolunteerNeed = () => {
   const [volunteerPosts, setVolunteerPosts] = useState([]);
+  const { user } = useAuth();
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/volunteers`)
+      .get(`${import.meta.env.VITE_API_URL}/volunteers`, {
+        withCredentials: true,
+      })
       .then((data) => setVolunteerPosts(data.data));
-  }, []);
+  }, [user?.email]);
   return (
     <div>
       <Fade>

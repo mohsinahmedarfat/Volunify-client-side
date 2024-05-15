@@ -32,7 +32,7 @@ const MyPost = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/volunteer-post/${id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/volunteer-post/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

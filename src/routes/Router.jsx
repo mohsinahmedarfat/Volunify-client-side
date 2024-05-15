@@ -55,7 +55,7 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/volunteer-post/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/volunteer-post/${params.id}`),
       },
       {
         path: "/be-volunteer/:id",
@@ -65,7 +65,7 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/be-volunteer/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/be-volunteer/${params.id}`),
       },
       {
         path: "/my-posts",
@@ -83,7 +83,7 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/volunteer-post/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/volunteer-post/${params.id}`),
       },
       {
         path: "/my-requests/:email",
@@ -93,7 +93,9 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/volunteer-requests/${params.email}`),
+          fetch(
+            `${import.meta.env.VITE_API_URL}/volunteer-requests/${params.email}`
+          ),
       },
     ],
   },

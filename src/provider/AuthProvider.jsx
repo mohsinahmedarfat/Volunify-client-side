@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
       // if user exits then issue a token
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedUser, {
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedUser, {
+          .post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
