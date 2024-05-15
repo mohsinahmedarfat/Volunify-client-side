@@ -1,14 +1,19 @@
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { MdTableRows } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import VolunteerPostCard from "./VolunteerPostCard";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const VolunteerAllPosts = () => {
   const [volunteerPosts, setVolunteerPosts] = useState([]);
   const { user } = useAuth();
   const [sort, setSort] = useState("");
   const [search, setSearch] = useState("");
+  const [toggle, setToggle] = useState(false);
+
   useEffect(() => {
     axios
       .get(
@@ -53,12 +58,22 @@ const VolunteerAllPosts = () => {
             name="sort"
             id=""
             className="border text-center w-max h-max p-4 rounded-md text-sm bg-[#D4A373] *:bg-white *:text-black text-white"
-            // className="hover:bg-[#AD8B73] bg-[#D4A373] text-white font-medium"
           >
             <option value="">Sort</option>
             <option value="asc">Ascending</option>
             <option value="dsc">Descending</option>
           </select>
+
+          <div
+            onClick={() => setToggle(!toggle)}
+            className="my-auto md:my-2 ml-3 text-[#AD8B73] cursor-pointer"
+          >
+            {toggle ? (
+              <BsFillGrid3X3GapFill className="text-3xl size-8" />
+            ) : (
+              <MdTableRows className="text-4xl size-8" />
+            )}
+          </div>
         </div>
 
         <form onSubmit={handleSearch}>
@@ -76,14 +91,53 @@ const VolunteerAllPosts = () => {
         </form>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {volunteerPosts.map((volunteerPost) => (
-          <VolunteerPostCard
-            key={volunteerPost._id}
-            volunteerPost={volunteerPost}
-          ></VolunteerPostCard>
-        ))}
-      </div>
+      {toggle ? (
+        <div className="overflow-x-auto">
+          <table className="table">
+            <thead>
+              <tr className="text-[#AD8B73] font-bold">
+                <th></th>
+                <th>Post Title</th>
+                <th>Location</th>
+                <th>Category</th>
+                <th>No. of Vol. Needs</th>
+                <th>Deadline</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {volunteerPosts.map((volunteerPost, idx) => (
+                <tr key={volunteerPost._id} className="hover">
+                  <th>{idx + 1}</th>
+                  <td>{volunteerPost.title}</td>
+                  <td>{volunteerPost.location.split(",")[0]}</td>
+                  <td>{volunteerPost.category}</td>
+                  <td className="text-center">
+                    {volunteerPost.volunteersNeed}
+                  </td>
+                  <td>{volunteerPost.deadline.split("T")[0]}</td>
+                  <td>
+                    <Link to={`/volunteer-post/${volunteerPost._id}`}>
+                      <div className=" bg-[#FAEDCD] text-[#774936] text-sm font-medium me-2 px-2.5 py-0.5 rounded-lg md:rounded-xl lg:rounded-full text-center">
+                        <p>View Details</p>
+                      </div>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {volunteerPosts.map((volunteerPost) => (
+            <VolunteerPostCard
+              key={volunteerPost._id}
+              volunteerPost={volunteerPost}
+            ></VolunteerPostCard>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

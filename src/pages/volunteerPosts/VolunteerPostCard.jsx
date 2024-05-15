@@ -21,7 +21,7 @@ const VolunteerPostCard = ({ volunteerPost }) => {
             </span>
           </div>
 
-          <Link to={`/be-volunteer/${_id}`}>
+          <Link to={`/volunteer-post/${_id}`}>
             <div className=" text-[#b07d62] hover:text-[#9d6b53] hover:font-medium w-max flex items-center ">
               <p>View Details</p>
               <svg
