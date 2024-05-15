@@ -5,6 +5,7 @@ import VolunteerOpportunities from "./VolunteerOpportunities";
 import VolunteerNeed from "../volunteerPosts/VolunteerNeed";
 import { ScrollRestoration } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { Fade } from "react-awesome-reveal";
 
 const Home = () => {
   return (
@@ -13,7 +14,9 @@ const Home = () => {
         <title>Volunify</title>
       </Helmet>
       <ScrollRestoration></ScrollRestoration>
-      <Slider />
+      <Fade>
+        <Slider />
+      </Fade>
       <VolunteerNeed></VolunteerNeed>
       <BeAVolunteer></BeAVolunteer>
       <VolunteerOpportunities></VolunteerOpportunities>

@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import VolunteerPostCard from "./VolunteerPostCard";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
 const VolunteerAllPosts = () => {
   const [volunteerPosts, setVolunteerPosts] = useState([]);
+  console.log(volunteerPosts);
   const { user } = useAuth();
   const [sort, setSort] = useState("");
   const [search, setSearch] = useState("");
@@ -38,6 +40,7 @@ const VolunteerAllPosts = () => {
       <Helmet>
         <title>Need Volunteer Posts | Volunify</title>
       </Helmet>
+      <ScrollRestoration></ScrollRestoration>
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold mb-3">
           Empowerment Through Volunteering
@@ -91,53 +94,55 @@ const VolunteerAllPosts = () => {
         </form>
       </div>
 
-      {toggle ? (
-        <div className="overflow-x-auto">
-          <table className="table">
-            <thead>
-              <tr className="text-[#AD8B73] font-bold">
-                <th></th>
-                <th>Post Title</th>
-                <th>Location</th>
-                <th>Category</th>
-                <th>No. of Vol. Needs</th>
-                <th>Deadline</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {volunteerPosts.map((volunteerPost, idx) => (
-                <tr key={volunteerPost._id} className="hover">
-                  <th>{idx + 1}</th>
-                  <td>{volunteerPost.title}</td>
-                  <td>{volunteerPost.location.split(",")[0]}</td>
-                  <td>{volunteerPost.category}</td>
-                  <td className="text-center">
-                    {volunteerPost.volunteersNeed}
-                  </td>
-                  <td>{volunteerPost.deadline.split("T")[0]}</td>
-                  <td>
-                    <Link to={`/volunteer-post/${volunteerPost._id}`}>
-                      <div className=" bg-[#FAEDCD] text-[#774936] text-sm font-medium me-2 px-2.5 py-0.5 rounded-lg md:rounded-xl lg:rounded-full text-center">
-                        <p>View Details</p>
-                      </div>
-                    </Link>
-                  </td>
+      <Fade>
+        {toggle ? (
+          <div className="overflow-x-auto">
+            <table className="table">
+              <thead>
+                <tr className="text-[#AD8B73] font-bold">
+                  <th></th>
+                  <th>Post Title</th>
+                  <th>Location</th>
+                  <th>Category</th>
+                  <th>No. of Vol. Needs</th>
+                  <th>Deadline</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {volunteerPosts.map((volunteerPost) => (
-            <VolunteerPostCard
-              key={volunteerPost._id}
-              volunteerPost={volunteerPost}
-            ></VolunteerPostCard>
-          ))}
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {volunteerPosts.map((volunteerPost, idx) => (
+                  <tr key={volunteerPost._id} className="hover">
+                    <th>{idx + 1}</th>
+                    <td>{volunteerPost.title}</td>
+                    <td>{volunteerPost.location.split(",")[0]}</td>
+                    <td>{volunteerPost.category}</td>
+                    <td className="text-center">
+                      {volunteerPost.volunteersNeed}
+                    </td>
+                    <td>{volunteerPost.deadline.split("T")[0]}</td>
+                    <td>
+                      <Link to={`/volunteer-post/${volunteerPost._id}`}>
+                        <div className=" bg-[#FAEDCD] text-[#774936] text-sm font-medium me-2 px-2.5 py-0.5 rounded-lg md:rounded-xl lg:rounded-full text-center">
+                          <p>View Details</p>
+                        </div>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {volunteerPosts.map((volunteerPost) => (
+              <VolunteerPostCard
+                key={volunteerPost._id}
+                volunteerPost={volunteerPost}
+              ></VolunteerPostCard>
+            ))}
+          </div>
+        )}
+      </Fade>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Root = () => {
   return (
     <div className="font-mont">
       <Navbar></Navbar>
-      <div className="*:py-10">
+      <div className="*:py-10 min-h-[calc(100vh-405px)]">
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

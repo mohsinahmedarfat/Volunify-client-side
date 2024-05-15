@@ -109,7 +109,7 @@ const AddVolunteer = () => {
               <input
                 name="location"
                 type="text"
-                placeholder="Location"
+                placeholder="location"
                 className="input input-bordered"
                 required
               />

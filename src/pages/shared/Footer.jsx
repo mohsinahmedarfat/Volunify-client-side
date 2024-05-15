@@ -134,6 +134,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <p className="text-center pb-5 text-gray-600 px-3">
+        Copyright © 2024 - All right reserved by VOLUNIFY
+      </p>
     </footer>
   );
 };
