@@ -1,7 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import {
+  ScrollRestoration,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
 import DatePicker from "react-datepicker";
 import useAuth from "../../hooks/useAuth";
 
@@ -89,6 +93,7 @@ const BeVolunteer = () => {
       <Helmet>
         <title>Be a Volunteer | Volunify</title>
       </Helmet>
+      <ScrollRestoration></ScrollRestoration>
       <div className="card shrink-0 w-full shadow-2xl bg-base-100 mx-auto">
         <h1 className="text-3xl text-center mb-5 mt-10 font-bold">
           Be a Volunteer

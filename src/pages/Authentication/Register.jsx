@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, ScrollRestoration, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo-1.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
@@ -62,6 +62,7 @@ const Register = () => {
       <Helmet>
         <title>Register | Volunify</title>
       </Helmet>
+      <ScrollRestoration></ScrollRestoration>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
         <div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 border border-gray-300">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

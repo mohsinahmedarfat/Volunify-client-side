@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, ScrollRestoration, useLoaderData } from "react-router-dom";
 
 const VolunteerPostDetails = () => {
   const volunteerPost = useLoaderData();
@@ -18,6 +18,7 @@ const VolunteerPostDetails = () => {
 
   return (
     <div>
+      <ScrollRestoration></ScrollRestoration>
       <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 py-10 mx-auto space-y-6 lg:py-16 lg:items-center">
         <div className="h-full">
           <img

@@ -1,4 +1,9 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  ScrollRestoration,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import logo from "../../assets/logo-1.png";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
@@ -45,6 +50,7 @@ const Login = () => {
       <Helmet>
         <title>Login | Volunify</title>
       </Helmet>
+      <ScrollRestoration></ScrollRestoration>
       <div className="flex flex-col items-center py-6 lg:h-[36rem] lg:flex-row">
         <div className="lg:w-1/2">
           <div className="flex items-center mb-6">

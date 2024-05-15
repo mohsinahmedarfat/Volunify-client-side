@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-[#E9EDC9]">
-      <div className="container px-6 py-12 mx-auto">
+      <div className="container px-6 pt-12 pb-8 mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4 lg:pl-12 ">
           <div className="sm:col-span-2">
             <h1 className="max-w-lg text-xl text-balance font-semibold tracking-tight text-gray-800 xl:text-2xl">
@@ -81,10 +81,14 @@ const Footer = () => {
 
         <hr className="my-6 border border-[#CCD5AE] md:my-8" />
 
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <h1 className="text-3xl font-extrabold bg-gradient-to-r from-[#AD8B73] to-[#CCD5AE] inline-block text-transparent bg-clip-text">
             <Link to="/">Volunify</Link>
           </h1>
+
+          <p className="text-center  text-gray-600 px-3">
+            Copyright © 2024 - All right reserved by VOLUNIFY
+          </p>
 
           <div className="-mx-2 flex">
             <a
@@ -134,9 +138,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="text-center pb-5 text-gray-600 px-3">
-        Copyright © 2024 - All right reserved by VOLUNIFY
-      </p>
     </footer>
   );
 };
