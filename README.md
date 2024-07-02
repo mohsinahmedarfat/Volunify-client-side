@@ -1,6 +1,6 @@
 # [VOLUNIFY](https://volunify-2c546.web.app)
 
-Welcome to the repository for my awesome website! You can visit the live site by clicking the website title name.
+Voluntify is a platform that connects volunteers with organizations or individuals in need of volunteer assistance. It facilitates both volunteering opportunities and volunteer recruitment.
 
 ### Features and Characteristics
 
