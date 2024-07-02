@@ -31,3 +31,10 @@ Voluntify is a platform that connects volunteers with organizations or individua
 - [react-tooltip](https://react-tooltip.com/docs/getting-started) used for tooltip.
 - [swiper](https://swiperjs.com/get-started) used for slider/carousel.
 - so on
+
+### If you clone this project you've to do some steps:
+- Copy the repository URL
+- Open a terminal window
+- Navigate to your desired location
+- Clone the repository: git clone <URL>
+- Install the npm packages: npm install
