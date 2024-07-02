@@ -12,6 +12,15 @@ Voluntify is a platform that connects volunteers with organizations or individua
 - You can update or delete your volunteer post(s).
 - If you're logged in, you can see the volunteer post's full details.
 
+### Technologies used :
+- react
+- react router dom
+- tailwind css
+- firebase
+- node.js
+- express.js
+- mongoDB
+
 ### npm packages used :
 - [react-hot-toast](https://react-hot-toast.com/) used for toast.
 - [sweetalert2](https://sweetalert2.github.io/) used for popup alert.
