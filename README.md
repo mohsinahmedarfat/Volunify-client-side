@@ -51,11 +51,62 @@ Ensure the following are installed:
 ### 2. Clone the Repository
 Run the following command in a terminal:
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/mohsinahmedarfat/Volunify-client-side.git
 ```
-Replace `<your-repo-link>` with the actual GitHub repository link.
 Navigate to the project directory:
 ```bash
 cd <project-folder-name>
 ```
 #
+### 3. Install Dependencies
+As the project has separate `client` and `server` folders:
+Navigate to the client folder:
+```bash
+cd client
+npm install
+```
+Navigate to the server folder:
+```bash
+cd ../server
+npm install
+```
+#
+### 4. Set Up Environment Variables
+Add necessary environment variables for Firebase, MongoDB, and other configurations:
+1. Create a `.env` file in the frontend folder.
+2. Add variables such as:
+```env
+FIREBASE_API_KEY=your-firebase-api-key
+FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
+FIREBASE_PROJECT_ID=your-firebase-project-id
+```
+#
+### 5. Start the Database
+If using a local MongoDB server:
+1. Open MongoDB Compass or run `mongod` in a terminal.
+2. Ensure MongoDB is running.
+If using MongoDB Atlas:
+- Make sure the MONGO_URI in the `.env` file is set correctly with valid credentials.
+#
+### 6. Run the Project
+As the project has separate folders:
+Start the frontend:
+```bash
+cd client
+npm start
+```
+Start the backend:
+```bash
+cd ../server
+npm run dev
+```
+#
+### 7. Access the Application
+- Open a browser and navigate to `http://localhost:3000` for the frontend.
+- And for the backend run on `http://localhost:5000`.
+#
+### Common Issues
+- Missing `.env` Variables: Make sure users configure all required environment variables.
+- Dependency Errors: Use `npm install` to ensure all packages are installed correctly.
+- Database Connection: Ensure MongoDB is running or the cloud credentials are correct.
+- Version Conflicts: Use the same Node.js version as specified in your project (if any).
