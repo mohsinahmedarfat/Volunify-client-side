@@ -35,13 +35,7 @@ Voluntify is a platform that connects volunteers with organizations or individua
 ### Server side repo code is [here](https://github.com/mohsinahmedarfat/Volunify-server-side).
 ---
 
-### If you clone this project you've to do some steps:
-- Copy the repository URL
-- Open a terminal window
-- Navigate to your desired location
-- Clone the repository: git clone <URL>
-- Install the npm packages: npm install
-#
+## If you clone this project you've to do some steps:
 ### 1. Prerequisites
 Ensure the following are installed:
 - Node.js (LTS version recommended)
