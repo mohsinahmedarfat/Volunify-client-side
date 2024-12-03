@@ -85,17 +85,18 @@ FIREBASE_PROJECT_ID=your-firebase-project-id
 If using a local MongoDB server:
 1. Open MongoDB Compass or run `mongod` in a terminal.
 2. Ensure MongoDB is running.
+
 If using MongoDB Atlas:
 - Make sure the MONGO_URI in the `.env` file is set correctly with valid credentials.
 #
 ### 6. Run the Project
 As the project has separate folders:
-Start the frontend:
+- Start the frontend:
 ```bash
 cd client
 npm start
 ```
-Start the backend:
+- Start the backend:
 ```bash
 cd ../server
 npm run dev
