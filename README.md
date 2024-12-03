@@ -32,6 +32,9 @@ Voluntify is a platform that connects volunteers with organizations or individua
 - [swiper](https://swiperjs.com/get-started) used for slider/carousel.
 - so on
 
+### Server side repo code is [here](https://github.com/mohsinahmedarfat/Volunify-server-side).
+---
+
 ### If you clone this project you've to do some steps:
 - Copy the repository URL
 - Open a terminal window
@@ -39,4 +42,4 @@ Voluntify is a platform that connects volunteers with organizations or individua
 - Clone the repository: git clone <URL>
 - Install the npm packages: npm install
 
-### Server side repo code is [here](https://github.com/mohsinahmedarfat/Volunify-server-side).
+
