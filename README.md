@@ -91,12 +91,13 @@ If using MongoDB Atlas:
 #
 ### 6. Run the Project
 As the project has separate folders:
-- Start the frontend:
+
+Start the frontend:
 ```bash
 cd client
 npm start
 ```
-- Start the backend:
+Start the backend:
 ```bash
 cd ../server
 npm run dev
