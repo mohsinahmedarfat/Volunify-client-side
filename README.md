@@ -42,5 +42,11 @@ Voluntify is a platform that connects volunteers with organizations or individua
 - Clone the repository: git clone <URL>
 - Install the npm packages: npm install
 
+## 1. Prerequisites
+Ensure the following are installed:
+- Node.js (LTS version recommended)
+- MongoDB (Installed locally or use a cloud service like MongoDB Atlas)
+- Git (To clone the repository)
+
 ```bash
 git clone <your-repo-link>
