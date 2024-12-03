@@ -47,7 +47,15 @@ Ensure the following are installed:
 - Node.js (LTS version recommended)
 - MongoDB (Installed locally or use a cloud service like MongoDB Atlas)
 - Git (To clone the repository)
-##
-
+#
+### 2. Clone the Repository
+Run the following command in a terminal:
 ```bash
 git clone <your-repo-link>
+```
+Replace `<your-repo-link>` with the actual GitHub repository link.
+Navigate to the project directory:
+```bash
+cd <project-folder-name>
+```
+#
