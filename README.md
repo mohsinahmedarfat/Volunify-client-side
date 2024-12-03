@@ -33,7 +33,7 @@ Voluntify is a platform that connects volunteers with organizations or individua
 - so on
 
 ### Server side repo code is [here](https://github.com/mohsinahmedarfat/Volunify-server-side).
-___
+***
 
 ### If you clone this project you've to do some steps:
 - Copy the repository URL
