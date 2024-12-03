@@ -44,5 +44,3 @@ Voluntify is a platform that connects volunteers with organizations or individua
 
 ```bash
 git clone <your-repo-link>
-
-
